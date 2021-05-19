@@ -25,7 +25,7 @@ export class AddusersComponent implements OnInit {
   userId
   ngOnInit(): void {
     this.activatedroute.queryParams.subscribe(params => {
-      console.log(params['userId'])
+      
      
  this.userId= params['userId']
  if(params['userId']){
@@ -35,7 +35,7 @@ export class AddusersComponent implements OnInit {
       
     })
     this.trainservice.getuserbyId(this.userId).subscribe(user => {
-      console.log(user)
+      
       this.adduserform.patchValue({
         username: user.username,
         role: user.role
