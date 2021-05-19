@@ -17,7 +17,7 @@ export class UsersdashboardComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.ticketbookingservice.useralltickets(window.location.pathname.substring(6)).subscribe(tickets => {
+    this.ticketbookingservice.useralltickets(window.location.hash.substring(7)).subscribe(tickets => {
       this.Tickets = tickets;
       
 
