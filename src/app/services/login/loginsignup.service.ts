@@ -28,7 +28,7 @@ export class LoginsignupService {
   }
 
   getname():Observable<any>{
-    console.log('in getname')
+    
     return this.http.get(`${environment.apibaseUrl}/name`)
   }
 
@@ -43,7 +43,7 @@ export class LoginsignupService {
   getcredentials(){
     this.http.get(`${environment.apibaseUrl}/credentials`).subscribe((res:any) => {
       if(res.response.substring(1,6) == 'ADMIN'){
-        console.log('hello')
+        
         localStorage.setItem('admin','true')
          this.admin = true;
       }else{

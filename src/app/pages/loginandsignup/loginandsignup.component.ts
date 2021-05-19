@@ -44,7 +44,7 @@ export class LoginandsignupComponent implements OnInit {
 
 
     this.loginservice.getname().subscribe(res => {
-      console.log(`user is ${res.response}`)
+      
       if(res.response){
       this.username = res.response
       this.route.navigate([`/user/${this.username}`])
@@ -57,10 +57,10 @@ export class LoginandsignupComponent implements OnInit {
 
   signup(event:Event){
     event.preventDefault();
-    console.log(this.signupform.value)
+    
     this.loginservice.signup(this.signupform.value).subscribe(res => {
      if(res.response == 'Success'){
-      //  alert('now you can login')
+      
        this.openSnackBar("SignUp Success","Done");
      }
     })

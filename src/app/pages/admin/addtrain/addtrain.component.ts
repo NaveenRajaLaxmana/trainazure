@@ -26,20 +26,12 @@ export class AddtrainComponent implements OnInit {
     trainName: new FormControl(''),
     trainId: new FormControl(''),
     classType: new FormArray([
-      // new FormGroup({
-      //   classtype: new FormControl(''),
-      //   amount: new FormControl('')
-      // })
+      
     ]),
     from: new FormControl(''),
     to: new FormControl(''),
     midstations : new FormArray([
-      // new FormGroup({
-      //   stationname: new FormControl(''),
-      //   amountforadult: new FormControl(''),
-      //   amountforchild: new FormControl(''),
-      //   journeytime: new FormControl('')
-      // })
+     
     ]),
     costperchildren: new FormControl(''),
     costperperson: new FormControl(''),
@@ -56,7 +48,7 @@ trainId
 updatetrain
   ngOnInit(): void {
     this.activatedroute.queryParams.subscribe(params => {
-      console.log(params['trainId'])
+      
      
  this.trainId= params['trainId']
  if(params['trainId']){
@@ -66,9 +58,9 @@ updatetrain
       
     })
     this.trainservice.gettraininfo(this.trainId).subscribe(train => {
-     console.log(train)
+     
       
-   let trainclass=  train[0].classType;
+ 
 
 
      this.callupdatefunctions(train[0])
@@ -78,12 +70,11 @@ updatetrain
    
   
  
-      console.log(train[0])
+      
  
   
      
-      // console.log(this.addtrainform.value)
-      // this.classtypelist;
+     
     })
    
    
@@ -103,7 +94,7 @@ updatetrain
   }
 
   callupdatefunctions(train){
-    console.log('update function')
+    
     this.updatemidstation(train.midstations)
     this.updateformvalue(train)
     this.updateavailabledays(train.availabledays) 
@@ -152,7 +143,7 @@ updatetrain
   }
 
   updateclassType(classtypes){
-    // console.log(classtypes.length)
+    
    return  classtypes.forEach(element => {
        this.classtypelist.push(new FormGroup({ classtype : new FormControl(element.classtype),amount: new FormControl(element.amount)}))
      });
@@ -160,7 +151,7 @@ updatetrain
   }
 
   updatemidstation(midstations){
-    // console.log(midstations.length)
+   
    return midstations.forEach(element => {
        this.stationlist.push(new FormGroup({ stationname : new FormControl(element.stationname),amountforadult: new FormControl(element.amountforadult), amountforchild: new FormControl(element.amountforchild),journeytime : new FormControl(element.journeytime) }))
      });
@@ -168,32 +159,22 @@ updatetrain
   }
 
   updateavailabledays(availabledays){
-    // console.log(availabledays)
+   
   return  availabledays.forEach(element => {
-    console.log(element)
+    
     let totaldays = document.querySelectorAll('.days');
-    // console.log(totaldays)
+    
     totaldays.forEach(days => {
       
       let value = days.classList.contains(element)
      
           if(value){
-            console.log(value+" "+element)
+            
             days.classList.add('mat-chip-selected')
             
           }
     })
-      // this.availabledays.push(new FormControl(element))
-      // if(this.availabledays.value.includes(element)){
-      //   let totaldays = document.querySelectorAll('.days');
-      //   console.log(totaldays)
-      //   for(let i=0;i<totaldays.length-1;i++){
-      //     let value = totaldays[i].classList.contains(element)
-      //     if(value){
-      //       totaldays[i].classList.add('mat-chip-selected')
-      //     }
-      //   }
-      // }
+     
     })
     
   }
@@ -208,18 +189,18 @@ updatetrain
   
     
     if(this.availabledays.value.includes(event.target.innerText)){
-      console.log('its there')
+      
       let index=this.availabledays.controls.indexOf(event.target.innerText)
      return this.availabledays.removeAt(index)
     }else{
       this.availabledays.push(new FormControl(event.target.innerText))
     }
 
-    console.log(this.availabledays.value)
+    
   }
 
   addtrain(){
-    console.log(this.addtrainform.value)
+    
     this.trainservice.addtrain(this.addtrainform.value).subscribe(res => {
       if(res.response == "Success"){
         this.openSnackBar("Train added","Done");

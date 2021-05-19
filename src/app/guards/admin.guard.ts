@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
     if(this.auth.isadmin() && this.auth.isLoggedin()){
       return true
     }else{
-    //  alert('only for admin')
+    
       return this.route.navigate(['/login'])
     }
   }

@@ -16,10 +16,10 @@ export class UsersdashboardComponent implements OnInit {
   constructor(private auth:LoginsignupService,private ticketbookingservice:TicketbookingService) { }
 
   ngOnInit(): void {
-    // console.log(window.location.pathname.substring(6))
+  
     this.ticketbookingservice.useralltickets(window.location.pathname.substring(6)).subscribe(tickets => {
       this.Tickets = tickets;
-      console.log(this.Tickets)
+      
 
       this.Tickets.forEach(ticket => {
         let maindivchild = document.createElement('div');

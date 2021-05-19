@@ -24,7 +24,7 @@ export class TrainsComponent implements OnInit {
     
     this.trains.getalltrains().subscribe(trains => {
      this.Trains=trains
-      console.log(this.Trains)
+      
       this.Trains.forEach(train => {
         let maindivchild = document.createElement('div');
         maindivchild.classList.add('value')
@@ -82,7 +82,7 @@ export class TrainsComponent implements OnInit {
         maindivchild.appendChild(updateButton)
         maindivchild.appendChild(removeButton)
 
-        console.log(maindivchild)
+        
         document.getElementById('values').appendChild(maindivchild)
 
       })
@@ -105,7 +105,7 @@ export class TrainsComponent implements OnInit {
   }
 
   deletetrain(id){
-    console.log(id)
+    
     this.trains.deletetrain(id).subscribe(res => {
      if(res.response == "Success"){
       this.openSnackBar("Train Deleted","Done");

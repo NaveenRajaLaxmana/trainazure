@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
     this.userservice.getallusers().subscribe(users => {
       
       this.Users = users;
-      console.log(this.Users)
+      
       this.dataSource = new MatTableDataSource(this.Users);
     })
   }

@@ -61,8 +61,6 @@ export class GetalltrainsService {
     return this.http.put<any>(`${environment.apibaseUrl}/updateuser`,body,httpOptions)
   }
 
-  getfakedata():Observable<any>{
-    return this.http.get<any>('http://jsonplaceholder.typicode.com/users')
-  }
+ 
 
 }

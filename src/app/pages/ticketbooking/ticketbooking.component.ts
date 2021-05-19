@@ -96,7 +96,7 @@ export class TicketbookingComponent implements OnInit{
    }
 
    this.loginservice.getname().subscribe(res => {
-    console.log(`user is ${res.response}`)
+    
     if(res.response){
     this.username = res.response
     
@@ -107,16 +107,16 @@ export class TicketbookingComponent implements OnInit{
 
     // this.numbers = Array(3).fill(0).map((x,i)=>1);
     this.activatedroute.queryParams.subscribe(params => {
-      console.log(params['trainId'])
+      
      
  this.trainId= params['trainId']
       
     })
-    console.log(this.trainId)
+    
     
     this.ticketbookservice.gettraininfo(this.trainId).subscribe(train => {
       
-      console.log(train[0])
+     
       this.ticketbookform.patchValue({
         trainName: train[0].trainName,
         trainId:train[0].trainId,
@@ -128,7 +128,7 @@ export class TicketbookingComponent implements OnInit{
         classType:train[0].classType,
         username: this.username
       })
-      console.log(this.ticketbookform.value)
+      
     
       if(train) {
         this.gottrain=true;
@@ -149,23 +149,20 @@ export class TicketbookingComponent implements OnInit{
     this.passengerslist.removeAt(-1);
   }
 
-  // submit(){
-  //   console.log(this.ticketbookform.value)
-  // }
 
   
 
   ticketbook(){
-    // this.ticketbookform.removeControl('amount')
+    
     if(!this.loginservice.isLoggedin()){
        this.openSnackBar("Please Login in","Close");
        return this.route.navigate(['/login'])
     }
     document.querySelector('mat-progress-bar').classList.add('show')
-    console.log(this.totalamount)
+   
     this.ticketbookform.addControl('totalamount', new FormControl(this.totalamount.toString()))
     this.ticketbookform.removeControl('amount')
-    console.log(this.ticketbookform.value)
+    
     this.ticketbookservice.bookticket(this.ticketbookform.value).subscribe(result => {
       if(result.response == "ticket booked"){
         this.openSnackBar("Ticket Booked","Done");

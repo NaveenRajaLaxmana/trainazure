@@ -22,17 +22,15 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.gettrains.getalltrains().subscribe(train => {
       this.trains = train
-      console.log(this.trains);
+      
     })
 
     this.getparams()
-    this.gettrains.getfakedata().subscribe(data => console.log(data))
+   
   }
   getparams(){
     this.route.queryParams.subscribe(params => {
-      console.log(params['from'])
-      console.log(params['to'])
-      console.log(params['date'])
+      
 
       this.from = params['from']
       this.to = params['to']
@@ -43,7 +41,7 @@ export class SearchComponent implements OnInit {
 
     this.trains= this.trains.filter(train => {
       if(train.from == this.from && train.to == this.to ){
-        // && train.availabledays.includes(this.date.substring(0,3))
+        
         return train
       }
      })
@@ -55,7 +53,7 @@ export class SearchComponent implements OnInit {
     
    this.trains= this.trains.filter(train => {
     if(train.from == this.from && train.to == this.to){
-      // && train.availabledays.includes(this.date.substring(0,3))
+      
       
       return train
     }

@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
     }
     this.isadmin= localStorage.getItem('admin') ? true : false
     this.loginservice.getname().subscribe(res => {
-      console.log(`user is ${res.response}`)
+      
       if(res.response){
       this.username = res.response
       
