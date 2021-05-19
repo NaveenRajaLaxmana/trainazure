@@ -1,0 +1,83 @@
+table {
+    margin: 0 auto;
+    width: calc(100% - 30px);
+  }
+  .filter-searchbookings{
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+  }
+  h2{
+      text-align: center;
+  }
+  .welcome {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px;
+  }
+  .mobile-layout{
+    display: none;
+    flex-wrap: wrap;
+    width: 100vw;
+  }
+  .mobile-layout .table-flex{
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 100vw;
+    padding: 15px 50px;
+    max-height: max-content;
+  }
+  .mobile-layout .table-flex .heading{
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+    text-align: center;
+    justify-content: space-around;
+    
+  }
+  .mobile-layout .table-flex .heading div{
+    /* flex-basis: 150px; */
+    padding: 10px;
+    background: purple;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .mobile-layout .table-flex .values{
+    display: flex;
+    
+  }
+
+  @media(max-width: 645px){
+    table{
+      width: calc(100vw * 0.9);
+      display: none;
+    }
+    .mobile-layout{
+        display: flex;
+    }
+    .filter-searchbookings{
+        display: none;
+    }
+  }
+
+  @media(max-width: 560px){
+    table{
+      
+     display: none;
+    }
+    
+   
+  }
+  @media(max-width: 450px){
+    .logout{
+      display: block;
+    }
+    .filter-addtrains{
+      align-items: center;
+      flex-direction: column;
+    }
+    .filter-addtrains button{
+      margin: 10px;
+    }
+  }

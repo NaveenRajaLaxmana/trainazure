@@ -1,0 +1,139 @@
+#search-block
+{
+    position: relative;
+    padding: 50px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #25A6E9;
+}
+#search-block #box
+{
+    display: flex;
+    background: #fff;
+    padding: 15px;
+}
+#search-block #box form
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#search-block #box form div
+{
+    margin: 5px 15px;
+}
+#search-block #box form div input
+{
+    position: relative;
+    height: 40px;
+    background: #fff;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+#trainlists{
+    position: relative;
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: column;
+}
+#trainlists .list
+{
+    margin: 15px 0;
+    border: 1px solid #000;
+}
+#trainlists .list .head
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#trainlists .list .head .trainname-head
+{
+    background: #e58c19;
+    
+}
+#trainlists .list .head .trainname-head h4{
+    text-align: start;
+    padding: 15px 50px 15px 10px;
+}
+#trainlists .list .head .train-running-days
+{
+    background: #e58c19;
+}
+#trainlists .list .head .train-running-days h4{
+    text-align: start;
+    padding: 15px 50px 15px 10px;
+}
+#trainlists .list .head .train-running-days h4 span{
+    margin-right: 3px;
+}
+#trainlists .list .middle
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+#trainlists .list .last{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 15px;
+    
+}
+#trainlists .list .last .box
+{
+    padding: 10px 25px;
+    border-radius: 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+#trainlists .list .last .box .availability
+{
+    color: green;
+}
+@media(max-width: 820px){
+    #trainlists .list{
+        margin: 10px;
+    }
+}
+@media(max-width: 560px){
+    #trainlists .list .head{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #e58c19;
+    }
+    #trainlists .list .middle h2{
+        font-size: 15px;
+    }
+    #trainlists .list .last .box{
+        margin: 5px;
+    }
+}
+@media(max-width: 500px){
+    #search-block{
+        padding: 20px 20px;
+        justify-content: center;
+    }
+    #search-block #box{
+        padding: 5px;
+    }
+    #search-block #box form{
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    #search-block #box form .mat-focus-indicator.mat-raised-button.mat-button-base.mat-primary{
+        width: 40px;
+        height: 25px;
+        margin: 3px;
+        padding: 5px;
+        line-height: unset;
+    }
+    .mat-button-wrapper{
+        font-size: 12px;
+    }
+}

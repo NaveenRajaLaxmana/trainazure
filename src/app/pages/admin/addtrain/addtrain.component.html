@@ -1,0 +1,148 @@
+<div class="full-size">
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Toolbar</p>
+        
+        <a routerLink="/admin/users" mat-button>
+          Users
+        </a>
+        <a routerLink="/admin/trains" mat-button>
+          Trains
+        </a>
+      </mat-drawer>
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+      </div>
+<form class="addtrain"  [formGroup]="addtrainform">
+    <div class="input-fields">
+        <label for="trainname">TrainName</label>
+        <input type="text" class="inputs" placeholder="TrainName" name="trainname" formControlName="trainName">
+    </div>
+    <div class="input-fields">
+        <label for="trainId">TrainId</label>
+        <input type="text" placeholder="TrainId" class="inputs" name="trainId" formControlName="trainId">
+    </div>
+    
+    <div class="input-fields">
+        <label for="from">From</label>
+        <input type="text" class="inputs" placeholder="From" name="From" formControlName="from">
+    </div>
+    <div class="input-fields">
+        <label for="To">To</label>
+        <input type="text" class="inputs" placeholder="To" name="To" formControlName="to">
+    </div>
+    <div class="stations-info">
+        <label>Class Type</label>
+        <div class="button-group">
+            <button mat-mini-fab color="primary" (click)="addclassType()">+</button>
+        <button mat-mini-fab color="primary" (click)="removeclassType()">-</button>
+        </div>
+        <div class="input-field" *ngFor="let classlist of classtypelist.controls; let i=index;" formArrayName="classType">
+        <mat-card [formGroupName]="i">
+        
+            <div class="input-fields">
+                <label for="stationname">ClassType</label>
+                <input type="text" class="inputs" name="classtype" placeholder="Classtype" formControlName="classtype">
+            </div>
+            <div class="input-fields">
+                <label for="amountforadult">Amount</label>
+                <input type="text" class="inputs" name="amountforadult" placeholder="Amount" formControlName="amount">
+            </div>
+            
+        
+    </mat-card>
+</div>
+        <!-- <mat-label>Class Type</mat-label>
+  <mat-select formControlName="classType" multiple>
+    <mat-option *ngFor="let class of classtype" [value]="class.value" >
+      {{class.viewValue}}
+    </mat-option>
+  </mat-select> -->
+    </div>
+    <div class="stations-info">
+        <label>MidStations Info</label>
+        <div class="button-group">
+            <button mat-mini-fab color="primary" (click)="addstationsinfolist()">+</button>
+        <button mat-mini-fab color="primary" (click)="removestationsinfolist()">-</button>
+        </div>
+        
+    <div class="input-field" *ngFor="let station of stationlist.controls; let i=index;" formArrayName="midstations">
+        <mat-card [formGroupName]="i">
+        
+            <div class="input-fields">
+                <label for="stationname">Station Name</label>
+                <input type="text" class="inputs" name="stationname" placeholder="Stationname" formControlName="stationname">
+            </div>
+            <div class="input-fields">
+                <label for="amountforadult">Amountforadult</label>
+                <input type="text" class="inputs" name="amountforadult" placeholder="Amountforadult" formControlName="amountforadult">
+            </div>
+            <div class="input-fields">
+                <label for="amountforchild">Amountforchild</label>
+                <input type="text" class="inputs" name="amountforchild" placeholder="Amountforchild" formControlName="amountforchild">
+            </div>
+            <div class="input-fields">
+                <label for="journeytime">Journeytime</label>
+                <input type="text" class="inputs" name="journeytime" placeholder="Journeytime" formControlName="journeytime">
+            </div>
+        
+    </mat-card>
+    </div>
+    
+</div>
+<div class="input-fields">
+    <label for="costperchildren">Costperchildren</label>
+    <input type="text" class="inputs" placeholder="Costperchildren" name="Costperchildren" formControlName="costperchildren">
+</div>
+<div class="input-fields">
+    <label for="costperperson">Costperperson</label>
+    <input type="text" class="inputs" placeholder="costperperson" name="Costperperson" formControlName="costperperson">
+</div>
+
+<div class="input-fields">
+    <label for="departurestationname">Depature StationName</label>
+    <input type="text" class="inputs" placeholder="Depature StationName" name="Depature StationName" formControlName="departurestationname">
+</div>
+<div class="input-fields">
+    <label for="arrivalstationname">Arrival StationName</label>
+    <input type="text" class="inputs" placeholder="Arrival StationName" name="Arrival StationName" formControlName="arrivalstationname">
+</div>
+
+<div class="input-fields">
+    <label for="availabledays">availabledays</label>
+    <mat-chip-list aria-label="Fish selection" formArrayName="availabledays">
+        <mat-chip color="primary" class="days Mon" (click)="adddays($event)" >Mon</mat-chip>
+        <mat-chip color="primary" class="days Tue" (click)="adddays($event)" >Tue</mat-chip>
+        <mat-chip color="primary" class="days Wed" (click)="adddays($event)">Wed</mat-chip>
+        <mat-chip color="primary" class="days Thu" (click)="adddays($event)">Thu</mat-chip>
+        <mat-chip color="primary" class="days Fri" (click)="adddays($event)">Fri</mat-chip>
+        <mat-chip color="primary" class="days Sat" (click)="adddays($event)">Sat</mat-chip>
+        <mat-chip color="primary" class="days Sun" (click)="adddays($event)">Sun</mat-chip>
+      </mat-chip-list>
+    <!-- <input type="text" class="inputs" placeholder="availabledays" name="availabledays" formControlName="availabledays"> -->
+</div>
+<div class="input-fields">
+    <label for="departuretime">Departuretime</label>
+    <input type="text" class="inputs" placeholder="departuretime" name="Departuretime" formControlName="departuretime">
+</div>
+<div class="input-fields">
+    <label for="arrivaltime">Arrivaltime</label>
+    <input type="text" class="inputs" placeholder="Arrivaltime" name="Arrivaltime" formControlName="arrivaltime">
+</div>
+<div class="input-fields">
+    <label for="journeytime">Journeytime</label>
+    <input type="text" class="inputs" name="journeytime" placeholder="Journeytime" formControlName="journeytime">
+</div>
+<button mat-raised-button color="primary" (click)="addtrain()" *ngIf="!updatetrain" type="submit">Add Train</button>
+<button mat-raised-button color="primary" (click)="updatetrainmethod()" *ngIf="updatetrain" type="submit">Update Train</button>
+
+</form>
+
+    
+  
+    
+
+</mat-drawer-container>
+</div>

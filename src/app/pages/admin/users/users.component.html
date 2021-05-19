@@ -1,0 +1,58 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Toolbar</p>
+        
+        <a routerLink="/admin/users" mat-button>
+          Users
+        </a>
+        <a routerLink="/admin/trains" mat-button>
+          Trains
+        </a>
+      </mat-drawer>
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+      </div>
+      <h2>Users</h2>
+      <div class="filter-adduser">
+
+      <input type="text" placeholder="filter" (keyup)="applyFilter($event)">
+      <button routerLink="/admin/adduser" mat-raised-button color="primary">Add User</button>
+    </div>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="UserName">
+          <th mat-header-cell *matHeaderCellDef> UserName </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Role">
+          <th mat-header-cell *matHeaderCellDef> Role </th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="UpdateUser">
+          <th mat-header-cell *matHeaderCellDef> UpdateUser </th>
+          <td mat-cell *matCellDef="let element"><button mat-raised-button color="accent" (click)="updateUser(element.id)">Update</button></td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="RemoveUser">
+          <th mat-header-cell *matHeaderCellDef> RemoveUser </th>
+          <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="deleteUser(element.id)" color="warn">Remove</button> </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+</mat-drawer-container>

@@ -1,0 +1,101 @@
+<section id="banner-home">
+    <div id="booking-block">
+        <h2>Book a Ticket</h2>
+        <div class="inputs-block">
+        <div class="inputs-block-1">
+            <div>
+                
+                <input type="text" [(ngModel)]="from" class="input" name="from" placeholder="From">
+               
+            </div>
+            <div>
+                
+                <input type="text" [(ngModel)]="to" class="input" name="to" placeholder="To">
+                
+            </div>
+            <div>
+                <input type="text" name="input" [(ngModel)]="general" id="classtype" placeholder="General">
+
+            </div>
+        </div>
+        <div class="inputs-block-2">
+                <div>
+                    
+                    <input matInput [matDatepicker] = "picker" placeholder = "Choose a date" class="date-input" [(ngModel)]="date">
+                    <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    
+
+                </div>
+                
+            <div>
+                <input type="text" class="input" [(ngModel)]="classType" name="allclases" placeholder="All classes">
+                
+            </div>
+        </div>
+    </div>
+    <!-- <button type="submit" class="booking-block-submit">Submit</button> -->
+    <button mat-raised-button color="primary" type="submit" (click)="gotosearchpage()">Submit</button>
+    </div>
+</section>
+<section id="services">
+    <h1>Find the suitable service for you<br>our service is to serve the right one</h1>
+    <div class="service-tabs">
+        <div class="circles">
+            <div class="circle">
+                <img src="../../../assets/train (1).png" alt="Toursit Train">
+            </div>
+            <div class="circle">
+                <img src="../../../assets/mountains.png" alt="Hills">
+            </div>
+            <div class="circle">
+                <img src="../../../assets/train (2).png" alt="Charter Train">
+            </div>
+            <div class="circle">
+                <img src="../../../assets/resort.png" alt="Holiday Package">
+            </div>
+            <div class="circle">
+                <img src="../../../assets/hotel.png" alt="Hotels">
+            </div>
+        </div>
+        
+    </div>
+</section>
+<section id="showcase">
+    <h1>Holidays</h1>
+    <div class="cards">
+        <div class="card"><div class="img"><img src="../../../assets/banner.jpg" alt="Train"></div><div class="content"><h3>Maharaja Express</h3><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi harum quasi cupiditate veniam reprehenderit minima rem, temporibus officiis ducimus expedita hic nostrum repellat, magnam facilis?</p></div></div>
+        <div class="card"><div class="img"><img src="../../../assets/banner.jpg" alt="Train"></div><div class="content"><h3>Maharaja Express</h3><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi harum quasi cupiditate veniam reprehenderit minima rem, temporibus officiis ducimus expedita hic nostrum repellat, magnam facilis?</p></div></div>
+        <div class="card"><div class="img"><img src="../../../assets/banner.jpg" alt="Train"></div><div class="content"><h3>Maharaja Express</h3><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi harum quasi cupiditate veniam reprehenderit minima rem, temporibus officiis ducimus expedita hic nostrum repellat, magnam facilis?</p></div></div>
+        <div class="card"><div class="img"><img src="../../../assets/banner.jpg" alt="Train"></div><div class="content"><h3>Maharaja Express</h3><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi harum quasi cupiditate veniam reprehenderit minima rem, temporibus officiis ducimus expedita hic nostrum repellat, magnam facilis?</p></div></div>
+        <div class="card"><div class="img"><img src="../../../assets/banner.jpg" alt="Train"></div><div class="content"><h3>Maharaja Express</h3><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi harum quasi cupiditate veniam reprehenderit minima rem, temporibus officiis ducimus expedita hic nostrum repellat, magnam facilis?</p></div></div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="line line-1">
+        <h5>Train Bus</h5>
+        <h5>General Information</h5>
+        <h5>Important Information</h5>
+        <h5>Agents</h5>
+        <h5>Enqueries</h5>
+    </div>
+    <div class="line line-2">
+        <h5>How to</h5>
+        <h5>Train Bus Official App</h5>
+        <h5>Advertise With Us</h5>
+        <h5>Refund Rules</h5>
+        <h5>Facilities</h5>
+    </div>
+    <div class="line line-3">
+        <h5>Train bus ewallet</h5>
+        <h5>Train bUS Loyality problem</h5>
+        <h5>About Us</h5>
+        <h5>Train Bus zone</h5>
+        <h5>Ticket Booking</h5>
+    </div>
+    <div class="line line-4">
+        <h5>For new Migrated Agents</h5>
+        <h5>Mobile zone</h5>
+        <h5>Integration Policy</h5>
+    </div>
+</footer>

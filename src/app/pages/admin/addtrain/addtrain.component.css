@@ -1,0 +1,98 @@
+.addtrain
+{
+    margin: 50px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.addtrain .input-fields
+{
+    display: flex;
+    margin: 10px;
+    /* flex-direction: column; */
+} 
+.addtrain .input-fields label
+{
+    font-size: 18px;
+    margin-right: 10px;
+}
+.addtrain .input-fields mat-select
+{
+    width: max-content;
+}
+/* .addtrain .input-fields.classtype{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.addtrain .input-fields.classtype .button-group{ */
+    /* margin: 0 10px;
+} */
+/* .addtrain .input-fields.classtype .button-group button{
+    margin-right: 15px;
+}
+.addtrain .input-fields.classtype .loop
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+} */
+.addtrain .input-fields .inputs
+{
+    height: 30px;
+    width: 168px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    position: relative;
+    background: transparent;
+    color: #000;
+    font-size: 17px;
+}
+.addtrain .stations-info
+{
+    display: flex;
+    flex-direction: column;
+}
+.addtrain .stations-info label{
+    font-size: 18px;
+}
+.addtrain .stations-info label,.addtrain .stations-info .button-group button
+{
+    margin-right: 15px;
+    margin-bottom: 25px;
+}
+.addtrain .stations-info .input-field mat-card
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+.addtrain button
+{
+    margin-top: 15px;
+}
+
+.example-container
+{
+    height: calc(100vh - 62px);
+}
+.example-sidenav-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+  }
+  .example-sidenav a
+  {
+      margin-top: 15px;
+      display: block;
+  }

@@ -1,0 +1,12 @@
+<nav id="nav-bar">
+    <div id="nav-div">
+    <img src="../../../assets/train.png" alt="Logo" id="nav-icon">
+    </div>
+    <h1 id="nav-name">TrainFare</h1>
+    <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li *ngIf="show && !isadmin"><a routerLink="/user/{{username}}">DashBoard</a></li>
+        <li *ngIf="isadmin"><a routerLink="/admin/trains">DashBoard</a></li>
+        <li><a routerLink="/login">SignUp</a></li>
+    </ul>
+</nav>

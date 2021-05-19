@@ -1,0 +1,132 @@
+<section id="search-block">
+    <div id="box">
+        <form action="" (ngSubmit)="onSubmit()">
+            <div>
+                
+                <input type="text" class="input" [(ngModel)]="from" name="from" placeholder="From">
+               
+            </div>
+            <div>
+                
+                <input type="text" class="input" name="to" [(ngModel)]="to" placeholder="To">
+                
+            </div>
+            <div>
+                <input type="text" name="input" id="classtype" [(ngModel)]="general" placeholder="General">
+
+            </div>
+            <div>
+                    
+                <input matInput [matDatepicker] = "picker" [(ngModel)]="date" name="date" placeholder = "Choose a date" class="date-input">
+                <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                
+
+            </div>
+            
+        <div>
+            <input type="text" class="input" name="allclases" [(ngModel)]="classType" placeholder="All classes">
+            
+        </div>
+        <button mat-raised-button color="primary" type="submit">Search</button>
+        </form>
+    </div>
+</section>
+<section id="trainlists">
+    <div *ngFor="let train of trains; let i=index" class="list">
+        <div class="head">
+            <div class="trainname-head">
+                <h4>{{train.trainName}}</h4>
+            </div>
+            <div class="train-running-days">
+                <h4>Runs On : <span *ngFor="let availabledays of train.availabledays;let j=index">{{availabledays}}</span></h4>
+            </div>
+        </div>
+        <div class="middle">
+            <h2><span class="starting-timing">{{train.departuretime}} |</span><span class="station-name">{{ train.departurestationname }} |</span><span class="date">WED,25 MAR</span></h2>
+            <h2><span class="journey-hours">{{train.journeytime}}</span></h2>
+            <h2><span class="reaching-timing">{{train.arrivaltime}} |</span><span class="station-name">{{train.arrivalstationname}} |</span><span class="date">Thu,26 Mar</span></h2>
+        </div>
+        <div class="last" >
+            <div class="box" (click)="booktic(train.trainId)" *ngFor="let classType of train.classType;let k =index">
+                <h4 class="coach-name">{{ classType.classtype }}</h4>
+                <!-- <h5 class="availability">AVALIABLE-0671</h5> -->
+                <h6 class="amount">Rs. <span>{{ classType.amount }}</span></h6>
+            </div>
+            <!-- <div class="box">
+                <h4 class="coach-name">Exec CHAIR CAR(EC)</h4>
+                <h5 class="availability">AVALIABLE-031</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div>
+            <div class="box">
+                <h4 class="coach-name">Anbhuti Class(EA)</h4>
+                <h5 class="availability">AVALIABLE-0021</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div> -->
+        </div>
+    </div>
+    <!-- <div class="list">
+        <div class="head">
+            <div class="trainname-head">
+                <h4>Chennai Express</h4>
+            </div>
+            <div class="train-running-days">
+                <h4>Runs On : <span>M T S S</span></h4>
+            </div>
+        </div>
+        <div class="middle">
+            <h2><span class="starting-timing">06:00 |</span><span class="station-name">MGR CHENNAI CTL |</span><span class="date">Thu,25 Mar</span></h2>
+            <h2><span class="journey-hours">04:45</span></h2>
+            <h2><span class="reaching-timing">10:45 |</span><span class="station-name">KSR BENGALURU |</span><span class="date">Thu,26 Mar</span></h2>
+        </div>
+        <div class="last">
+            <div class="box">
+                <h4 class="coach-name">AC CHAIR CAR(CC)</h4>
+                <h5 class="availability">AVALIABLE-0671</h5>
+                <h6 class="amount">Rs. <span>635</span></h6>
+            </div>
+            <div class="box">
+                <h4 class="coach-name">Exec CHAIR CAR(EC)</h4>
+                <h5 class="availability">AVALIABLE-031</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div>
+            <div class="box">
+                <h4 class="coach-name">Anbhuti Class(EA)</h4>
+                <h5 class="availability">AVALIABLE-0021</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="list">
+        <div class="head">
+            <div class="trainname-head">
+                <h4>Chennai Express</h4>
+            </div>
+            <div class="train-running-days">
+                <h4>Runs On : <span>M T S S</span></h4>
+            </div>
+        </div>
+        <div class="middle">
+            <h2><span class="starting-timing">06:00 |</span><span class="station-name">MGR CHENNAI CTL |</span><span class="date">Thu,25 Mar</span></h2>
+            <h2><span class="journey-hours">04:45</span></h2>
+            <h2><span class="reaching-timing">10:45 |</span><span class="station-name">KSR BENGALURU |</span><span class="date">Thu,26 Mar</span></h2>
+        </div>
+        <div class="last">
+            <div class="box">
+                <h4 class="coach-name">AC CHAIR CAR(CC)</h4>
+                <h5 class="availability">AVALIABLE-0671</h5>
+                <h6 class="amount">Rs. <span>635</span></h6>
+            </div>
+            <div class="box">
+                <h4 class="coach-name">Exec CHAIR CAR(EC)</h4>
+                <h5 class="availability">AVALIABLE-031</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div>
+            <div class="box">
+                <h4 class="coach-name">Anbhuti Class(EA)</h4>
+                <h5 class="availability">AVALIABLE-0021</h5>
+                <h6 class="amount">Rs. <span>1635</span></h6>
+            </div>
+        </div>
+    </div> -->
+</section>

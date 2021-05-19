@@ -1,0 +1,47 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Toolbar</p>
+        
+        <a routerLink="/admin/users" mat-button>
+          Users
+        </a>
+        <a routerLink="/admin/trains" mat-button>
+          Trains
+        </a>
+      </mat-drawer>
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+      </div>
+    
+      
+      <form class="adduser" [formGroup]="adduserform">
+          <h2>Add User</h2>
+          <div class="input-fields">
+              <label for="username">
+                UserName
+              </label>
+              <input type="username" name="username" class="emailid" placeholder="Username" formControlName="username">
+          </div>
+          <div class="input-fields">
+            <label for="password" >
+              Password
+            </label>
+            <input type="password" name="password" class="password" placeholder="Password" formControlName="password">
+        </div>
+        <div class="input-fields">
+            <mat-label style="display: block;">Role</mat-label>
+  <mat-select formControlName="role" multiple>
+    <mat-option *ngFor="let role of roletype" [value]="role" >
+      {{role}}
+    </mat-option>
+  </mat-select>
+            
+        </div>
+        <button  color="primary" *ngIf="!updateUser" mat-raised-button (click)="adduser()">ADD</button>
+        <button  color="primary" *ngIf="updateUser" mat-raised-button (click)="updateuser()">UPDATE</button>
+      </form>
+
+    </mat-drawer-container>
+

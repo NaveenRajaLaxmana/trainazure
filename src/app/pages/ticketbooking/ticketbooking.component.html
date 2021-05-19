@@ -1,0 +1,220 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="ticketbookform">
+        
+        
+        <form *ngIf="gottrain" class="ticket-book-form" [formGroup]="ticketbookform" autocomplete="off">
+            <ng-template matStepLabel>Fill out the details</ng-template>
+            <div class="input-fields">
+                <label for="trainName">TrainName</label>
+                <input type="text" class="inputs" name="TrainName" placeholder="TrainName" formControlName="trainName" required>
+            </div>
+            <div class="input-fields">
+                <label for="trainId">TrainId</label>
+                <input type="text" class="inputs" name="TrainId" placeholder="TrainId" formControlName="trainId" required>
+            </div>
+            <div class="input-fields">
+                <label for="Username">Username</label>
+                <input type="text" class="inputs" name="Username" placeholder="Username" formControlName="username" required>
+            </div>
+            <div class="input-fields">
+               
+                <mat-label>Class Type</mat-label>
+          <mat-select formControlName="classType" aria-required="true">
+            <mat-option *ngFor="let class of classtype" [value]="class.value">
+              {{class.viewValue}}
+            </mat-option>
+          </mat-select>
+            </div>
+            <div class="input-fields">
+                <label for="totalpassengers">Total Passengers</label>
+                <input type="text" class="inputs" name="TotalPassengers" placeholder="Total Passengers" formControlName="totalpassengers" required>
+            </div>
+            <div class="input-fields">
+                <label for="amount">Amount</label>
+                <input type="text" class="inputs" name="amount" placeholder="amount" formControlName="amount" required>
+            </div>
+            <div class="input-fields">
+                <label for="departuredatetime">Departure Date and Time</label>
+                <input type="text" class="inputs" name="departuredatetime" placeholder="departuredatetime" formControlName="departuredatetime" required> 
+            </div>
+            <div class="input-fields">
+                <label for="arrivaldatetime">Arrival Date and Time</label>
+                <input type="text" class="inputs" name="arrivaldatetime" placeholder="arrivaldatetime" formControlName="arrivaldatetime" required>
+            </div>
+            <div class="passengers-info">
+                <label>Passengers Info</label>
+                <div class="button-group">
+                    <button mat-mini-fab color="primary" (click)="addpassengerslist()">+</button>
+                <button mat-mini-fab color="primary" (click)="removepassengerslist()">-</button>
+                </div>
+                
+            <div class="input-field" *ngFor="let passenger of passengerslist.controls; let i=index;" formArrayName="passengersinfo">
+                <div [formGroupName]="i">
+                    <div class="input-fields">
+                        <label for="name">Name</label>
+                        <input type="text" class="inputs" name="name" placeholder="name" formControlName="name" required>
+                    </div>
+                    <div class="input-fields">
+                        <label for="age">Age</label>
+                        <input type="text" class="inputs" name="age" placeholder="age" formControlName="age" required>
+                    </div>
+                    <mat-radio-group aria-label="Select an option" formControlName="gender" aria-required="true">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                      </mat-radio-group>
+                    <!-- <div class="input-fields">
+                        <label for="Gender">Gender</label>
+                        <input type="text" class="inputs" name="Gender" placeholder="Gender" formControlName="gender">
+                    </div> -->
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="input-fields">
+            <label for="from">From</label>
+            <input type="text" class="inputs" name="from" placeholder="from" formControlName="from" required>
+        </div>
+        <div class="input-fields">
+            <label for="to">To</label>
+            <input type="text" class="inputs" name="to" placeholder="to" formControlName="to" required>
+        </div>
+        <div class="input-fields">
+            <label for="adultscounts">No of Adults</label>
+            <input type="text" class="inputs" name="adultscounts" placeholder="adultscounts" formControlName="adultscounts" required>
+        </div>
+        <div class="input-fields">
+            <label for="childrencounts">No of Children</label>
+            <input type="text" class="inputs" name="childrencounts" placeholder="childrencounts" formControlName="childrencounts" required>
+        </div>
+        <!-- <button type="submit" class="submit-button">Submit</button> -->
+       
+        
+        </form>
+        
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      
+    </mat-step>
+    <mat-step [stepControl]="paymentdetails" label="finish the payment" class="payments">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <form (ngSubmit)="ticketbook()">
+          <div class="details-amount">
+            <mat-card>
+                <h3>amount per adult :<span>{{ amountdetails.value * adultscount.value}}</span></h3>
+                <h3>amount per children :<span>{{ (amountdetails.value * 0.75) * childrencount.value}}</span></h3>
+                <h5>amount reduced to 75% cost for children</h5>
+                <h2>Total amount : </h2> <input type="text" id="totalamount" [value]="amountdetails.value * adultscount.value + (amountdetails.value * 0.75) * childrencount.value" name="totalamounts" [(ngModel)]="totalamounts">
+            </mat-card>
+          </div>
+        <div class="input-fields" id="upiamount">
+            <label for="UPI">UPI</label>
+            <input type="text" class="inputs" placeholder="Enter Your VPA" name="upiid" required>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button type="submit" matStepperNext>Next</button>
+        </div>
+      </form>
+      
+      
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+  
+  
+
+
+<!-- <form class="ticket-book-form" [formGroup]="ticketbookform">
+    <div class="input-fields">
+        <label for="trainName">TrainName</label>
+        <input type="text" class="inputs" name="TrainName" placeholder="TrainName" formControlName="TrainName">
+    </div>
+    <div class="input-fields">
+        <label for="trainId">TrainId</label>
+        <input type="text" class="inputs" name="TrainId" placeholder="TrainId" formControlName="TrainId">
+    </div>
+    <div class="input-fields">
+        <label for="Username">Username</label>
+        <input type="text" class="inputs" name="Username" placeholder="Username" formControlName="Username">
+    </div>
+    <div class="input-fields">
+       
+        <mat-label>Class Type</mat-label>
+  <mat-select formControlName="classType">
+    <mat-option *ngFor="let class of classtype" [value]="class.value" >
+      {{class.viewValue}}
+    </mat-option>
+  </mat-select>
+    </div>
+    <div class="input-fields">
+        <label for="totalpassengers">Total Passengers</label>
+        <input type="text" class="inputs" name="TotalPassengers" placeholder="Total Passengers" formControlName="TotalPassengers">
+    </div>
+    <div class="input-fields">
+        <label for="amount">Amount</label>
+        <input type="text" class="inputs" name="amount" placeholder="amount" formControlName="amount">
+    </div>
+    <div class="input-fields">
+        <label for="departuredatetime">Departure Date and Time</label>
+        <input type="text" class="inputs" name="departuredatetime" placeholder="departuredatetime" formControlName="departuredatetime"> 
+    </div>
+    <div class="input-fields">
+        <label for="arrivaldatetime">Arrival Date and Time</label>
+        <input type="text" class="inputs" name="arrivaldatetime" placeholder="arrivaldatetime" formControlName="arrivaldatetime">
+    </div>
+    <div class="passengers-info">
+        <label>Passengers Info</label>
+        <div class="button-group">
+            <button mat-mini-fab color="primary" (click)="addpassengerslist()">+</button>
+        <button mat-mini-fab color="primary" (click)="removepassengerslist()">-</button>
+        </div>
+        
+    <div class="input-field" *ngFor="let passenger of passengerslist.controls; let i=index;" formArrayName="passengersinfo">
+        <div [formGroupName]="i">
+            <div class="input-fields">
+                <label for="name">Name</label>
+                <input type="text" class="inputs" name="name" placeholder="name" formControlName="name">
+            </div>
+            <div class="input-fields">
+                <label for="age">Age</label>
+                <input type="text" class="inputs" name="age" placeholder="age" formControlName="age">
+            </div>
+            <div class="input-fields">
+                <label for="Gender">Gender</label>
+                <input type="text" class="inputs" name="Gender" placeholder="Gender" formControlName="gender">
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="input-fields">
+    <label for="from">From</label>
+    <input type="text" class="inputs" name="from" placeholder="from" formControlName="from">
+</div>
+<div class="input-fields">
+    <label for="to">To</label>
+    <input type="text" class="inputs" name="to" placeholder="to" formControlName="to">
+</div>
+<div class="input-fields">
+    <label for="adultscounts">No of Adults</label>
+    <input type="text" class="inputs" name="adultscounts" placeholder="adultscounts" formControlName="adultscounts">
+</div>
+<div class="input-fields">
+    <label for="childrencounts">No of Children</label>
+    <input type="text" class="inputs" name="childrencounts" placeholder="childrencounts" formControlName="childrencounts">
+</div>
+
+<button mat-raised-button color="primary" (click)="submit()">Submit</button>
+
+</form> -->

@@ -1,0 +1,51 @@
+.login,.SignUp,.admin
+{
+    margin: 50px 400px;
+    padding: 30px;
+}
+.login .form-inputs,.SignUp .form-inputs,.admin .form-inputs
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.login .form-inputs label,.SignUp .form-inputs,.admin .form-inputs 
+{
+    font-size: 18px;
+}
+.login .form-inputs input,.SignUp .form-inputs input,.admin .form-inputs input
+{
+    margin: 15px 10px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    position: relative;
+    color: #000;
+    font-size: 17px;
+}
+.login button,.SignUp button,.admin button{
+    margin: 10px;
+}
+@media(max-width: 1000px){
+    .login,.SignUp,.admin{
+       
+        margin: 50px calc(100vw/2 - 100px);
+    }
+    .login .form-inputs input,.SignUp .form-inputs input,.admin .form-inputs input{
+        width: max-content;
+    }
+    
+}
+@media(max-width: 480px){
+    .login,.SignUp,.admin{
+       
+        margin: 50px calc(100vw/2 * 0.5);
+    }
+}
+@media(max-width: 440px){
+    .login,.SignUp,.admin{
+       
+        margin: 50px calc(100vw/2 * 0.3);
+    }
+}

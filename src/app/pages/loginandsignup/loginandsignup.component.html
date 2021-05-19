@@ -1,0 +1,48 @@
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Login">
+        <form class="login" (ngSubmit)="login($event)" [formGroup]="loginform">
+            <div class="form-inputs">
+                <label for="username">Username</label>
+                <input type="text" name="email" id="loginusername" placeholder="Username" formControlName="username" required>
+            </div>
+            <div class="form-inputs">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="loginpassword" placeholder="Password" formControlName="password" required>
+            </div>
+            
+            <button mat-raised-button color="primary" type="submit">Login</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Sign Up">
+        <form class="SignUp" (ngSubmit)="signup($event)" [formGroup]="signupform">
+            <div class="form-inputs">
+                <label for="username">Username</label>
+                <input type="text" name="email" id="signupusername" placeholder="Username" formControlName="username" required>
+            </div>
+            <div class="form-inputs">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="signuppassword" placeholder="Password" formControlName="password" required>
+            </div>
+            <div class="form-inputs">
+                <label for="conpassword">Confirm Password</label>
+                <input type="password" name="conpassword" placeholder="Confirm Password" required>
+            </div>
+            <button mat-raised-button color="primary">SignUp</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Admin">
+        <form class="admin" (ngSubmit)="adminlogin($event)" [formGroup]="loginform">
+            <div class="form-inputs">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="adminusername" placeholder="Username" formControlName="username" required>
+            </div>
+            <div class="form-inputs">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="adminpassword" placeholder="Password" formControlName="password" required>
+            </div>
+            
+            <button mat-raised-button color="primary">Login</button>
+        </form>
+    </mat-tab>
+  </mat-tab-group>

@@ -1,0 +1,87 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Toolbar</p>
+        
+        <a routerLink="/admin/users" mat-button>
+          Users
+        </a>
+        <a routerLink="/admin/trains" mat-button>
+          Trains
+        </a>
+      </mat-drawer>
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+      </div>
+      <h2 style="margin-left: 25px;">Trains</h2>
+      <button class="logout" mat-raised-button color="primary" (click)="logout()">Logout</button>
+      <div class="filter-addtrains">
+
+      <input type="text" placeholder="filter" class="filter" (keyup)="applyFilter($event)">
+      <button routerLink="/admin/addtrain" mat-raised-button color="primary">Add Train</button>
+    </div>
+
+      <table *ngIf="Trains.length > 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+       
+        <ng-container matColumnDef="TrainName">
+          <th mat-header-cell *matHeaderCellDef> TrainName </th>
+          <td mat-cell *matCellDef="let element"> {{element.trainName}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="TrainID">
+          <th mat-header-cell *matHeaderCellDef> TrainId </th>
+          <td mat-cell *matCellDef="let element"> {{element.trainId}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="From">
+            <th mat-header-cell *matHeaderCellDef> From </th>
+            <td mat-cell *matCellDef="let element">{{element.from}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="To">
+            <th mat-header-cell *matHeaderCellDef> To </th>
+            <td mat-cell *matCellDef="let element">{{element.to}}</td>
+          </ng-container>
+
+        <ng-container matColumnDef="UpdateTrain">
+          <th mat-header-cell *matHeaderCellDef> UpdateTrain </th>
+          <td mat-cell *matCellDef="let element"><button (click)="updateTrain(element.trainId)" mat-raised-button color="accent">Update</button></td>
+        </ng-container>
+      
+       
+        <ng-container matColumnDef="RemoveTrain">
+          <th mat-header-cell *matHeaderCellDef> RemoveTrain </th>
+          <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="deletetrain(element.id)" color="warn">Remove</button> </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <div class="mobile-layout">
+        <div class="table-flex">
+          <div class="heading">
+            <div><h6>TrainName</h6></div>
+            <div><h6>TrainId</h6></div>
+            <div><h6>From</h6></div>
+            <div><h6>To</h6></div>
+            <div><h6>UpdateTrain</h6></div>
+            <div><h6>RemoveTrain</h6></div>
+          </div>
+          <div class="values" id="values" >
+            
+          </div>
+        </div>
+      </div>
+     
+</mat-drawer-container>
+

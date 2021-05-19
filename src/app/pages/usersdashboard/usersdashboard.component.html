@@ -1,0 +1,80 @@
+<div class="mybookings">
+    <div class="welcome">
+<h2>Welcome User</h2>
+<button mat-raised-button color="primary" (click)="logout()">Logout</button>
+</div>
+<h2>Your Bookings Details</h2>
+<div class="filter-searchbookings">
+
+    <input type="text" placeholder="filter" (keyup)="applyFilter($event)">
+    
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="TrainName">
+      <th mat-header-cell *matHeaderCellDef> TrainName </th>
+      <td mat-cell *matCellDef="let element"> {{element.trainName}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="TrainID">
+      <th mat-header-cell *matHeaderCellDef> TrainId </th>
+      <td mat-cell *matCellDef="let element"> {{element.trainId}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="From">
+        <th mat-header-cell *matHeaderCellDef> From </th>
+        <td mat-cell *matCellDef="let element">{{element.from}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="To">
+        <th mat-header-cell *matHeaderCellDef> To </th>
+        <td mat-cell *matCellDef="let element">{{element.to}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="No of Passengers">
+        <th mat-header-cell *matHeaderCellDef> No of Passengers </th>
+        <td mat-cell *matCellDef="let element">{{element.totalpassengers}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Total Amount">
+        <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+        <td mat-cell *matCellDef="let element">{{element.totalamount}}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="Details">
+      <th mat-header-cell *matHeaderCellDef> Details </th>
+      <td mat-cell *matCellDef="let element"><button (click)="getticketpdf(element.id)" mat-raised-button color="accent">Details</button></td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <div class="mobile-layout">
+    <div class="table-flex">
+      <div class="heading">
+        <div><h6>TrainName</h6></div>
+        <div><h6>TrainId</h6></div>
+        <div><h6>From</h6></div>
+        <div><h6>To</h6></div>
+        <div><h6>No of Passengers</h6></div>
+        <div><h6>Total Amount</h6></div>
+        <div><h6>Details</h6></div>
+      </div>
+      <div class="values" id="values" >
+        
+      </div>
+    </div>
+  </div>
+</div>
