@@ -33,6 +33,7 @@ import { TrainsComponent } from './pages/admin/trains/trains.component';
 import { UsersdashboardComponent } from './pages/usersdashboard/usersdashboard.component';
 import { AuthguardGuard } from './guards/authguard.guard';
 import { TokeninterceptorService } from './services/tokeninterceptors/tokeninterceptor.service'
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 
 
@@ -83,7 +84,8 @@ import { TokeninterceptorService } from './services/tokeninterceptors/tokeninter
     provide: HTTP_INTERCEPTORS,
     useClass: TokeninterceptorService,
     multi:true
-  }],
+  },
+  {provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
