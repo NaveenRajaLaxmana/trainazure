@@ -49,6 +49,7 @@
 .ticket-book-form .passengers-info .input-field div
 {
     display: flex;
+    flex-wrap: wrap;
     
 }
 .ticket-book-form .passengers-info .input-field mat-radio-group{
