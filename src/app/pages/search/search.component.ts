@@ -55,17 +55,17 @@ export class SearchComponent implements OnInit {
 
 
   onSubmit(){
-    this.notfound=false;
+    this.notfound=true;
     this.loading = true;
    this.trains= this.trains.filter(train => {
     
     if(train.from == this.from && train.to == this.to){
-      
+      this.notfound=false;
       this.loading=false
       return train
     }
     this.loading=false
-    this.notfound=true;
+    
    })
    
   }
