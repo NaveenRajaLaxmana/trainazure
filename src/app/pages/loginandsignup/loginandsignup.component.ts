@@ -87,6 +87,11 @@ export class LoginandsignupComponent implements OnInit {
       localStorage.setItem('token',`Bearer ${token.response}`)
 
       this.loginservice.getcredentials()
+      if(!localStorage.getItem('token')){
+
+        this.openSnackBar("Username or password incorrect","Done");
+      }
+        
    
    this.route.navigate([`/admin/trains`])
       return ;
@@ -94,11 +99,7 @@ export class LoginandsignupComponent implements OnInit {
    
 
    this.loading=false;
-   if(!localStorage.getItem('token')){
-
-     this.openSnackBar("Username or password incorrect","Done");
-   }
-     
+   
     
      
      

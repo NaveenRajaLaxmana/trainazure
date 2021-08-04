@@ -40,6 +40,7 @@ export class AddusersComponent implements OnInit {
         username: user.username,
         role: user.role
       })
+      this.adduserform.get('username').disable()
     })
   }
 

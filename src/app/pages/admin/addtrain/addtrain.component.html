@@ -18,20 +18,24 @@
 <form class="addtrain"  [formGroup]="addtrainform">
     <div class="input-fields">
         <label for="trainname">TrainName</label>
-        <input type="text" class="inputs" placeholder="TrainName" name="trainname" formControlName="trainName">
+        <input type="text" class="inputs" placeholder="TrainName" name="trainname" formControlName="trainName" required>
+        <span class="text-muted" *ngIf="addtrainform.get('trainName').hasError('required') && addtrainform.get('trainName').touched">Train name is required</span>
     </div>
     <div class="input-fields">
         <label for="trainId">TrainId</label>
-        <input type="text" placeholder="TrainId" class="inputs" name="trainId" formControlName="trainId">
+        <input type="text" placeholder="TrainId" class="inputs" name="trainId" formControlName="trainId" required>
+        <span class="text-muted" *ngIf="addtrainform.get('trainId').hasError('required') && addtrainform.get('trainId').touched">Train Id is required</span>
     </div>
     
     <div class="input-fields">
         <label for="from">From</label>
-        <input type="text" class="inputs" placeholder="From" name="From" formControlName="from">
+        <input type="text" class="inputs" placeholder="From" name="From" formControlName="from" required>
+        <span class="text-muted" *ngIf="addtrainform.get('from').hasError('required') && addtrainform.get('from').touched">From is required</span>
     </div>
     <div class="input-fields">
         <label for="To">To</label>
-        <input type="text" class="inputs" placeholder="To" name="To" formControlName="to">
+        <input type="text" class="inputs" placeholder="To" name="To" formControlName="to" required>
+        <span class="text-muted" *ngIf="addtrainform.get('to').hasError('required') && addtrainform.get('to').touched">To is required</span>
     </div>
     <div class="stations-info">
         <label>Class Type</label>
@@ -44,11 +48,13 @@
         
             <div class="input-fields">
                 <label for="stationname">ClassType</label>
-                <input type="text" class="inputs" name="classtype" placeholder="Classtype" formControlName="classtype">
+                <input type="text" class="inputs" name="classtype" placeholder="Classtype" formControlName="classtype" required>
+                <span class="text-muted" *ngIf="classlist.get('classtype').hasError('required') && classlist.get('classtype').touched">Classtype is required</span>
             </div>
             <div class="input-fields">
                 <label for="amountforadult">Amount</label>
-                <input type="text" class="inputs" name="amountforadult" placeholder="Amount" formControlName="amount">
+                <input type="text" class="inputs" name="amountforadult" placeholder="Amount" formControlName="amount" required>
+                <span class="text-muted" *ngIf="classlist.get('amount').hasError('required') && classlist.get('amount').touched">Amount is required</span>
             </div>
             
         
@@ -94,20 +100,24 @@
 </div>
 <div class="input-fields">
     <label for="costperchildren">Costperchildren</label>
-    <input type="text" class="inputs" placeholder="Costperchildren" name="Costperchildren" formControlName="costperchildren">
+    <input type="text" class="inputs" placeholder="Costperchildren" name="Costperchildren" formControlName="costperchildren" required>
+    <span class="text-muted" *ngIf="addtrainform.get('costperchildren').hasError('required') && addtrainform.get('costperchildren').touched">Costperchildren is required</span>
 </div>
 <div class="input-fields">
     <label for="costperperson">Costperperson</label>
-    <input type="text" class="inputs" placeholder="costperperson" name="Costperperson" formControlName="costperperson">
+    <input type="text" class="inputs" placeholder="costperperson" name="Costperperson" formControlName="costperperson" required>
+    <span class="text-muted" *ngIf="addtrainform.get('costperperson').hasError('required') && addtrainform.get('costperperson').touched">Costperperson is required</span>
 </div>
 
 <div class="input-fields">
     <label for="departurestationname">Depature StationName</label>
-    <input type="text" class="inputs" placeholder="Depature StationName" name="Depature StationName" formControlName="departurestationname">
+    <input type="text" class="inputs" placeholder="Depature StationName" name="Depature StationName" formControlName="departurestationname" required>
+    <span class="text-muted" *ngIf="addtrainform.get('departurestationname').hasError('required') && addtrainform.get('departurestationname').touched">Departurestationname is required</span>
 </div>
 <div class="input-fields">
     <label for="arrivalstationname">Arrival StationName</label>
-    <input type="text" class="inputs" placeholder="Arrival StationName" name="Arrival StationName" formControlName="arrivalstationname">
+    <input type="text" class="inputs" placeholder="Arrival StationName" name="Arrival StationName" formControlName="arrivalstationname" required>
+    <span class="text-muted" *ngIf="addtrainform.get('arrivalstationname').hasError('required') && addtrainform.get('arrivalstationname').touched">Arrivalstationname is required</span>
 </div>
 
 <div class="input-fields">
@@ -121,22 +131,26 @@
         <mat-chip color="primary" class="days Sat" (click)="adddays($event)">Sat</mat-chip>
         <mat-chip color="primary" class="days Sun" (click)="adddays($event)">Sun</mat-chip>
       </mat-chip-list>
+       
     <!-- <input type="text" class="inputs" placeholder="availabledays" name="availabledays" formControlName="availabledays"> -->
 </div>
 <div class="input-fields">
     <label for="departuretime">Departuretime</label>
-    <input type="text" class="inputs" placeholder="departuretime" name="Departuretime" formControlName="departuretime">
+    <input type="text" class="inputs" placeholder="departuretime" name="Departuretime" formControlName="departuretime" required>
+    <span class="text-muted" *ngIf="addtrainform.get('departuretime').hasError('required') && addtrainform.get('departuretime').touched">Departuretime is required</span>
 </div>
 <div class="input-fields">
     <label for="arrivaltime">Arrivaltime</label>
-    <input type="text" class="inputs" placeholder="Arrivaltime" name="Arrivaltime" formControlName="arrivaltime">
+    <input type="text" class="inputs" placeholder="Arrivaltime" name="Arrivaltime" formControlName="arrivaltime" required>
+    <span class="text-muted" *ngIf="addtrainform.get('arrivaltime').hasError('required') && addtrainform.get('arrivaltime').touched">Arrivaltime is required</span>
 </div>
 <div class="input-fields">
     <label for="journeytime">Journeytime</label>
-    <input type="text" class="inputs" name="journeytime" placeholder="Journeytime" formControlName="journeytime">
+    <input type="text" class="inputs" name="journeytime" placeholder="Journeytime" formControlName="journeytime" required>
+    <span class="text-muted" *ngIf="addtrainform.get('journeytime').hasError('required') && addtrainform.get('journeytime').touched">Journeytime is required</span>
 </div>
-<button mat-raised-button color="primary" (click)="addtrain()" *ngIf="!updatetrain" type="submit">Add Train</button>
-<button mat-raised-button color="primary" (click)="updatetrainmethod()" *ngIf="updatetrain" type="submit">Update Train</button>
+<button mat-raised-button color="primary" (click)="addtrain()" *ngIf="!updatetrain" type="submit" [disabled]="!addtrainform.valid">Add Train</button>
+<button mat-raised-button color="primary" (click)="updatetrainmethod()" *ngIf="updatetrain" type="submit" [disabled]="!addtrainform.valid">Update Train</button>
 
 </form>
 

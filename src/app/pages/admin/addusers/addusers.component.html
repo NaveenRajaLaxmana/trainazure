@@ -22,25 +22,27 @@
               <label for="username">
                 UserName
               </label>
-              <input type="username" name="username" class="emailid" placeholder="Username" formControlName="username">
+              <input type="username" name="username" class="emailid" placeholder="Username" formControlName="username" required>
+              <span class="text-muted" *ngIf="adduserform.get('username').hasError('required') && adduserform.get('username').touched">Username is required</span>
           </div>
           <div class="input-fields">
             <label for="password" >
               Password
             </label>
-            <input type="password" name="password" class="password" placeholder="Password" formControlName="password">
+            <input type="password" name="password" class="password" placeholder="Password" formControlName="password" required>
+            <span class="text-muted" *ngIf="adduserform.get('password').hasError('required') && adduserform.get('password').touched">Password is required</span>
         </div>
         <div class="input-fields">
             <mat-label style="display: block;">Role</mat-label>
-  <mat-select formControlName="role" multiple>
+  <mat-select formControlName="role" multiple required>
     <mat-option *ngFor="let role of roletype" [value]="role" >
       {{role}}
     </mat-option>
   </mat-select>
-            
+  <span class="text-muted" *ngIf="adduserform.get('role').hasError('required') && adduserform.get('role').touched">Role is required</span>
         </div>
-        <button  color="primary" *ngIf="!updateUser" mat-raised-button (click)="adduser()">ADD</button>
-        <button  color="primary" *ngIf="updateUser" mat-raised-button (click)="updateuser()">UPDATE</button>
+        <button  color="primary" *ngIf="!updateUser" mat-raised-button (click)="adduser()" [disabled]="!adduserform.valid">ADD</button>
+        <button  color="primary" *ngIf="updateUser" mat-raised-button (click)="updateuser()" [disabled]="!adduserform.valid">UPDATE</button>
       </form>
 
     </mat-drawer-container>
