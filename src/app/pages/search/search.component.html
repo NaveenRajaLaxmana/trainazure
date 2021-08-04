@@ -33,6 +33,8 @@
     </div>
 </section>
 <section id="trainlists">
+    <div *ngIf="loading" class="search-loading"><div class="loader"></div></div>
+    <div *ngIf="notfound" class="notfound"><h3>Not Found</h3></div>
     <div *ngFor="let train of trains; let i=index" class="list">
         <div class="head">
             <div class="trainname-head">

@@ -62,7 +62,7 @@ export class TicketbookingComponent implements OnInit{
   })
 
   constructor(private ticketbookservice:TicketbookingService,private _snackBar: MatSnackBar,private activatedroute:ActivatedRoute,private loginservice:LoginsignupService,private route:Router) {
-    
+   
    }
 
    get passengerslist(){

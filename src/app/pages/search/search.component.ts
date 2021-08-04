@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GetalltrainsService } from '../../services/trains/getalltrains.service';
 import { ActivatedRoute,Router } from '@angular/router'
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -16,15 +17,18 @@ export class SearchComponent implements OnInit {
   date;
   general;
   classType;
-
+  loading;
+  notfound=false;
   constructor(private gettrains:GetalltrainsService,private route:ActivatedRoute,private navigaterouter:Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.gettrains.getalltrains().subscribe(train => {
+     
       this.trains = train
-      
+      this.loading=false
     })
-
+    
     this.getparams()
    
   }
@@ -40,6 +44,7 @@ export class SearchComponent implements OnInit {
     })
 
     this.trains= this.trains.filter(train => {
+    
       if(train.from == this.from && train.to == this.to ){
         
         return train
@@ -50,14 +55,19 @@ export class SearchComponent implements OnInit {
 
 
   onSubmit(){
-    
+    this.notfound=false;
+    this.loading = true;
    this.trains= this.trains.filter(train => {
+    
     if(train.from == this.from && train.to == this.to){
       
-      
+      this.loading=false
       return train
     }
+    this.loading=false
+    this.notfound=true;
    })
+   
   }
 
   booktic(trainid){

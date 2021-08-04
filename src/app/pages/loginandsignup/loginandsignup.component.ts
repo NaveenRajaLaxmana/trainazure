@@ -11,6 +11,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginandsignupComponent implements OnInit {
 
+  loading=false;
+
    loginform= new FormGroup({
      username: new FormControl(''),
      password: new FormControl('')
@@ -33,25 +35,34 @@ export class LoginandsignupComponent implements OnInit {
   constructor(private loginservice:LoginsignupService,private route:Router,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    
   }
 
   login(event:Event){
     event.preventDefault();
+    this.loading=true;
     this.loginservice.login(this.loginform.value).subscribe(token => {
        localStorage.setItem('token',`Bearer ${token.response}`)
        
+       this.loginservice.getname().subscribe(res => {
+      
+        if(res.response){
+        this.username = res.response
+        
+        this.route.navigate([`/user/${this.username}`])
+        }
+
+        
+      });
+
+      return
     })
 
+    this.loading=false;
+    if(!localStorage.getItem('token')){
 
-    this.loginservice.getname().subscribe(res => {
-      
-      if(res.response){
-      this.username = res.response
-      this.route.navigate([`/user/${this.username}`])
-      }
-      
-    });
-
+      this.openSnackBar("Username or password incorrect","Done");
+    }
     
   }
 
@@ -70,16 +81,23 @@ export class LoginandsignupComponent implements OnInit {
 
   adminlogin(event:Event){
     event.preventDefault();
+    this.loading=true;
     this.loginservice.login(this.loginform.value).subscribe(token => {
       
       localStorage.setItem('token',`Bearer ${token.response}`)
-      
-   })
-   this.loginservice.getcredentials()
 
-   this.route.navigate([`/admin/trains`])
-
+      this.loginservice.getcredentials()
    
+   this.route.navigate([`/admin/trains`])
+      return ;
+   })
+   
+
+   this.loading=false;
+   if(!localStorage.getItem('token')){
+
+     this.openSnackBar("Username or password incorrect","Done");
+   }
      
     
      

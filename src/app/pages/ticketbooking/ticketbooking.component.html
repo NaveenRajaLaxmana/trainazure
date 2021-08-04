@@ -15,6 +15,7 @@
             <div class="input-fields">
                 <label for="Username">Username</label>
                 <input type="text" class="inputs" name="Username" placeholder="Username" formControlName="username" required>
+                <span class="text-muted" *ngIf="ticketbookform.get('username').hasError('required') && ticketbookform.get('username').touched">Username is required</span>
             </div>
             <div class="input-fields">
                
@@ -24,10 +25,12 @@
               {{class.viewValue}}
             </mat-option>
           </mat-select>
-            </div>
+        </div>
+        <span class="text-muted" *ngIf="ticketbookform.get('classType').hasError('required') && ticketbookform.get('classType').touched">Char Type is required</span>
             <div class="input-fields">
                 <label for="totalpassengers">Total Passengers</label>
                 <input type="text" class="inputs" name="TotalPassengers" placeholder="Total Passengers" formControlName="totalpassengers" required>
+                <span class="text-muted" *ngIf="ticketbookform.get('totalpassengers').hasError('required') && ticketbookform.get('totalpassengers').touched">Total Passengers is required</span>
             </div>
             <div class="input-fields">
                 <label for="amount">Amount</label>
@@ -53,15 +56,18 @@
                     <div class="input-fields">
                         <label for="name">Name</label>
                         <input type="text" class="inputs" name="name" placeholder="name" formControlName="name" required>
+                        <span class="text-muted" *ngIf="passenger.get('name').hasError('required') && passenger.get('name').touched">Name is required</span>
                     </div>
                     <div class="input-fields">
                         <label for="age">Age</label>
                         <input type="text" class="inputs" name="age" placeholder="age" formControlName="age" required>
+                        <span class="text-muted" *ngIf="passenger.get('age').hasError('required') && passenger.get('age').touched">AGE is required</span>
                     </div>
                     <mat-radio-group aria-label="Select an option" formControlName="gender" aria-required="true">
                         <mat-radio-button value="male">Male</mat-radio-button>
                         <mat-radio-button value="female">Female</mat-radio-button>
                       </mat-radio-group>
+                      <span class="text-muted" *ngIf="passenger.get('gender').hasError('required') && passenger.get('gender').touched">Gender is required</span>
                     <!-- <div class="input-fields">
                         <label for="Gender">Gender</label>
                         <input type="text" class="inputs" name="Gender" placeholder="Gender" formControlName="gender">
@@ -82,10 +88,12 @@
         <div class="input-fields">
             <label for="adultscounts">No of Adults</label>
             <input type="text" class="inputs" name="adultscounts" placeholder="adultscounts" formControlName="adultscounts" required>
+            <span class="text-muted" *ngIf="ticketbookform.get('adultscounts').hasError('required') && ticketbookform.get('adultscounts').touched">Adultscounts is required</span>
         </div>
         <div class="input-fields">
             <label for="childrencounts">No of Children</label>
             <input type="text" class="inputs" name="childrencounts" placeholder="childrencounts" formControlName="childrencounts" required>
+            <span class="text-muted" *ngIf="ticketbookform.get('childrencounts').hasError('required') && ticketbookform.get('childrencounts').touched">Childrencounts is required</span>
         </div>
         <!-- <button type="submit" class="submit-button">Submit</button> -->
        
@@ -93,28 +101,29 @@
         </form>
         
         <div>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!ticketbookform.valid">Next</button>
         </div>
       
     </mat-step>
     <mat-step [stepControl]="paymentdetails" label="finish the payment" class="payments">
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       <form (ngSubmit)="ticketbook()">
-          <div class="details-amount">
+          <div class="details-amount" [formGroup]="paymentdetails">
             <mat-card>
                 <h3>amount per adult :<span>{{ amountdetails.value * adultscount.value}}</span></h3>
                 <h3>amount per children :<span>{{ (amountdetails.value * 0.75) * childrencount.value}}</span></h3>
                 <h5>amount reduced to 75% cost for children</h5>
-                <h2>Total amount : </h2> <input type="text" id="totalamount" [value]="amountdetails.value * adultscount.value + (amountdetails.value * 0.75) * childrencount.value" name="totalamounts" [(ngModel)]="totalamounts">
+                <h2>Total amount : </h2> <input type="text" id="totalamount" [value]="amountdetails.value * adultscount.value + (amountdetails.value * 0.75) * childrencount.value" name="totalamounts" [(ngModel)]="totalamounts" formControlName="totalamount">
+                <span class="text-muted" *ngIf="paymentdetails.get('totalamount').hasError('required') && paymentdetails.get('totalamount').touched">Totalamount is required</span>
             </mat-card>
           </div>
         <div class="input-fields" id="upiamount">
             <label for="UPI">UPI</label>
-            <input type="text" class="inputs" placeholder="Enter Your VPA" name="upiid" required>
+            <input type="text" class="inputs" placeholder="Enter Your VPA" name="upiid" formControlName="upiid" required>
         </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button type="submit" matStepperNext>Next</button>
+          <button mat-button type="submit" matStepperNext [disabled]="!paymentdetails.valid">Next</button>
         </div>
       </form>
       
